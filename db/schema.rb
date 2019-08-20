@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_180733) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "photo"
     t.index ["brand_model_id"], name: "index_boats_on_brand_model_id"
     t.index ["user_id"], name: "index_boats_on_user_id"
   end
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_180733) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
