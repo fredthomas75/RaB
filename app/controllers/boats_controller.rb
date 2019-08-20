@@ -19,11 +19,12 @@ class BoatsController < ApplicationController
   # POST /boats
   def create
     @boat = Boat.new(boat_params)
-      if @boat.save
-        redirect_to boat_path(@boat)
-      else
-        render :new
-      end
+    if @boat.save
+      redirect_to boat_path(@boat)
+    else
+      render :new
+    end
+  end
 
   # GET /boats/:id/edit
   def edit
