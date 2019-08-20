@@ -36,6 +36,7 @@ class BoatsController < ApplicationController
 
   # PATCH /boats/:id
   def update
+    raise
     @boat.update(boat_params)
     authorize @boat
     redirect_to boat_path(@boat)
@@ -43,8 +44,8 @@ class BoatsController < ApplicationController
 
   # DELETE /boat/:id
   def destroy
-    @boat.destroy
     authorize @boat
+    @boat.destroy
     redirect_to boats_path
   end
 
