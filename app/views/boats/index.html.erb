@@ -1,0 +1,17 @@
+<h1>List of boats</h1>
+  <ul>
+    <% @boats.each do |boat| %>
+  <li>
+    <h2><%= boat.name %></h2>
+    Owner: <%= boat.user.email %>
+    Location: <%= boat.location %><br>
+    Capacity: <%= boat.capacity %><br>
+    Description: <%= boat.description %><br>
+    Year: <%= boat.year %><br>
+    Number of cabins: <%= boat.num_of_cabin %><br>
+    Category: <%= boat.category %><br>
+    Equipments: <%= boat.equipement %><br>
+    Brand - Model: <%= boat.brand_model.name %>
+  <% end %>
+  </li>
+</ul>
