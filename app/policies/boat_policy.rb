@@ -6,19 +6,19 @@ class BoatPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    return true
   end
 
-   def update?
-    user_is_owner?
+  def create?
+    return true
   end
 
-  def edit?
-    user_is_owner?
+  def update?
+    return user_is_owner?
   end
 
   def destroy?
-    user_is_owner?
+    return user_is_owner?
   end
 
   private
