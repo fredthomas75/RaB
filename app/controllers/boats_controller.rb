@@ -8,7 +8,6 @@ class BoatsController < ApplicationController
 
   # GET /boats/:id
   def show
-    link_to boat_path(@boat)
     authorize @boat
   end
 
@@ -51,7 +50,7 @@ class BoatsController < ApplicationController
   private
 
   def boat_params
-    params.require(:boat).permit(:name, :location, :description, :capacity, :year, :num_of_cabin, :category, :user_id, :brand_model_id, :photo)
+    params.require(:boat).permit(:name, :location, :description, :capacity, :year, :num_of_cabin, :category, :user_id, :brand_model_id, :photo, :photo_cache)
   end
 
   def set_boat
