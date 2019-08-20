@@ -3,8 +3,7 @@ class BoatsController < ApplicationController
 
   # GET /boats
   def index
-    @boats = Boat.all
-    authorize @boat
+    @boats = policy_scope(Boat)
   end
 
   # GET /boats/:id
