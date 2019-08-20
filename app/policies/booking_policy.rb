@@ -6,15 +6,15 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def inrdex?
-    return user_is_owner?
+    return user_is_logged_in
   end
 
   def show?
-    return user_is_owner?
+    return user_is_logged_in?
   end
 
   def create?
-    return user_is_owner?
+    return user_is_logged_in?
   end
 
   def new?
@@ -22,7 +22,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    return user_is_owner?
+    return user_is_logged_in?
   end
 
   def edit?
@@ -30,12 +30,12 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def destroy?
-    return user_is_owner?
+    return user_is_logged_in?
   end
 
   private
 
-  def user_is_owner?
-    return record.user_id == user
+  def user_is_logged_in?
+    return current_user
   end
 end
