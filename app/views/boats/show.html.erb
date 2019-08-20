@@ -12,3 +12,6 @@
     <img src=<% @boat.user.photo %> class="card-trip-user avatar-bordered" />
   </div>
 </div>
+<%= link_to "delete", boat_path(@boat), method: :delete %>
+
+<%= link_to "edit boat", edit_boat_path %>
