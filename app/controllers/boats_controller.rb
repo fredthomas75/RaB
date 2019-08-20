@@ -8,7 +8,6 @@ class BoatsController < ApplicationController
 
   # GET /boats/:id
   def show
-    link_to boat_path(@boat)
     authorize @boat
   end
 
