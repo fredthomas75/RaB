@@ -24,7 +24,6 @@ class BoatsController < ApplicationController
       else
         render :new
       end
-  end
 
   # GET /boats/:id/edit
   def edit
@@ -46,7 +45,7 @@ class BoatsController < ApplicationController
   private
 
   def boat_params
-    params.require(:boat).permit(:name, :location, :description, :capacity, :photo, :photo_cache, :user)
+    params.require(:boat).permit(:name, :location, :description, :capacity, :year, :num_of_cabin, :category, :user_id, :brand_model_id, :photo)
   end
 
   def set_boat
