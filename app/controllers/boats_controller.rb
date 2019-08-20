@@ -21,7 +21,7 @@ class BoatsController < ApplicationController
 
     @boat.save
 
-    redirect_to boat_path(boat)
+    redirect_to boat_path(@boat)
   end
 
   # GET /boats/:id/edit
@@ -44,7 +44,7 @@ class BoatsController < ApplicationController
   private
 
   def boat_params
-    params.require(:boat).permit(:name, :location, :description, :capacity, :year, :num_of_cabin, :category, :user_id, :brand_model_id)
+    params.require(:boat).permit(:name, :location, :description, :capacity, :year, :num_of_cabin, :category, :user_id, :brand_model_id, :photo)
   end
 
   def set_boat
