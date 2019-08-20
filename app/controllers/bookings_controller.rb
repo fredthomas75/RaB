@@ -43,6 +43,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:boat).permit(:name, :location, :description, :capacity, :year, :num_of_cabin, :category, :user_id, :brand_id)
+    params.require(:booking).permit()
   end
 end

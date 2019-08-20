@@ -1,0 +1,11 @@
+<%= simple_form_for(@boat) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :location %>
+  <%= f.input :capacity %>
+  <%= f.input :description %>
+  <%= f.input :equipement %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.association :user %>
+  <%= f.submit %>
+<% end %>
