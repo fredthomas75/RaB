@@ -8,6 +8,7 @@ class BoatsController < ApplicationController
 
   # GET /boats/:id
   def show
+    link_to boat_path(@boat)
   end
 
   # GET /boats/new
@@ -18,11 +19,11 @@ class BoatsController < ApplicationController
   # POST /boats
   def create
     @boat = Boat.new(boat_params)
-
-    @boat.save
-
-    redirect_to boat_path(@boat)
-  end
+      if @boat.save
+        redirect_to boat_path(@boat)
+      else
+        render :new
+      end
 
   # GET /boats/:id/edit
   def edit
