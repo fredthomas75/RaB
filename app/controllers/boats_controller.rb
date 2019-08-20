@@ -4,6 +4,7 @@ class BoatsController < ApplicationController
   # GET /boats
   def index
     @boats = Boat.all
+
   end
 
   # GET /boats/:id
