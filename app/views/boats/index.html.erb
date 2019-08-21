@@ -10,9 +10,9 @@
           <div>
             <h3><%= boat.name%></h3><h2>Brand - Model: <%= boat.brand_model.name %></h2>
             <p><%= boat.description %></p>
-            <p><%= boat.location %></p>
+            <p><%= boat.address %></p>
           </div>
-          <div><h2 class="card-trip-pricing">Capacity: <%= boat.capacity %></h2><h2 class="card-trip-pricing"> Price: ???</h2>
+          <div><h2 class="card-trip-pricing">Capacity: <%= boat.capacity %></h2><h2 class="card-trip-pricing"> Price: <%= boat.price %></h2>
           </div>
         <img src="<%= boat.user.photo %>" class="card-trip-user avatar-bordered" />
       </div>
