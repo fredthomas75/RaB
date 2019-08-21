@@ -1,25 +1,28 @@
-<div class="pl-5 pr-5 mt-5 mb-5">
-<div class="card-trip">
-  <img src=<%= @boat.photo %> />
-  <div class="card-trip-infos">
-    <div>
-      <h2><%= @boat.name%></h2>
-    </div>
-    <div>
-    <h2 class="card-trip-pricing">Capacity: <%= @boat.capacity %></h2>
-    <h2 class="card-trip-pricing">Price per night: <%= @boat.price %></h2>
-    <img src="<%= @boat.user.photo %>" class="card-trip-user avatar-bordered" />
+
+  <div class="banner" style="background-image: url('<%= cl_image_path @boat.photo %>');">
+  </div>
+
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="card-trip col-9">
+        <div>
+          <h2><%= @boat.name%></h2>
+        </div>
+        <div>
+           <p> <%=@boat.description%></p>
+        </div>
+      </div>
+      <div class="card-tripcol-3">
+        <% if @boat.user_id == current_user %>
+          <div><%= link_to "Delete", boat_path(@boat), method: :delete, class: "btn btn-danger" %></div>
+          <div><%= link_to "Edit", edit_boat_path(@boat), class: "btn btn-primary" %></div>
+        <% else %>
+          <%= link_to "Reserve", new_boat_booking_path(@boat), class: "btn btn-success" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-     <p> <%=@boat.description%></p>
 
-     <p class="btn btn-danger"><%= link_to "Delete", boat_path(@boat), method: :delete %></p>
-    <p class="btn btn-primary"><%= link_to "Edit", edit_boat_path(@boat) %></p>
-
-</div>
-
-
-</div>
