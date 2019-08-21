@@ -41,7 +41,8 @@ puts "Creating 10 boats"
   num_of_cabin: [1, 2, 3].sample,
   equipement: equipment.sample,
   user: User.all.sample,
-  brand_model: BrandModel.all.sample
+  brand_model: BrandModel.all.sample,
+  remote_photo_url: 'https://source.unsplash.com/random/?boat'
   ) }
 
 puts "Thank you for your patience!"
