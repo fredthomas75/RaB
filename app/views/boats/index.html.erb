@@ -1,18 +1,26 @@
 <h1>List of boats</h1>
 
-<% @boats.each do |boat| %>
-<div class="card-trip">
-  <img src=<%= boat.photo %> />
-    <div class="card-trip-infos">
-      <div>
-        <h3><%= boat.name %></h3><h2>Brand - Model: <%= boat.brand_model.name %></h2>
-        <p><%= boat.description %></p>
-        <p><%= boat.location %></p>
+<div class="container">
+  <div class="row">
+    <% @boats.each do |boat| %>
+    <%=link_to boat_path(boat), class: "col-6 card-outer-link" do %>
+    <div class="card-trip mb-5 mt-5">
+      <img src=<%= boat.photo %> />
+        <div class="card-trip-infos">
+          <div>
+            <h3><%= boat.name%></h3><h2>Brand - Model: <%= boat.brand_model.name %></h2>
+            <p><%= boat.description %></p>
+            <p><%= boat.location %></p>
+          </div>
+          <div><h2 class="card-trip-pricing">Capacity: <%= boat.capacity %></h2><h2 class="card-trip-pricing"> Price: ???</h2>
+          </div>
+        <img src="<%= boat.user.photo %>" class="card-trip-user avatar-bordered" />
       </div>
-      <div><h2 class="card-trip-pricing">Capacity: <%= boat.capacity %></h2><h2 class="card-trip-pricing"> Price: ???</h2>
-      </div>
-    <img src=<% boat.user.photo %> class="card-trip-user avatar-bordered" />
+    </div>
+    <% end %>
+    <% end %>
   </div>
 </div>
-<% end %>
+
+
 

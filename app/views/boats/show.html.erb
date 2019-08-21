@@ -2,13 +2,16 @@
   <img src=<%= @boat.photo %> />
   <div class="card-trip-infos">
     <div>
-      <h2><%= @boat.name %></h2>
-      <p><%= @boat.description %></p>
+      <h2><%= @boat.name%></h2>
+      <p> <%=@boat.description%></p>
     </div>
     <div>
     <h2 class="card-trip-pricing">Capacity: <%= @boat.capacity %></h2>
     <h2 class="card-trip-pricing">Price per night: ???</h2>
+    <img src="<%= @boat.user.photo %>" class="card-trip-user avatar-bordered" />
     </div>
-    <img src=<% @boat.user.photo %> class="card-trip-user avatar-bordered" />
   </div>
 </div>
+<%= link_to "delete", boat_path(@boat), method: :delete %>
+
+<%= link_to "edit boat", edit_boat_path(@boat) %>

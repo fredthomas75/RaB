@@ -2,6 +2,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
 }
 
 .card-trip > img {
@@ -37,3 +38,15 @@
   top: -20px;
   width: 40px;
 }
+
+.card-outer-link {
+  text-decoration: none;
+  color: black;
+  transition: .2s ease-in-out;
+   &:hover {
+  text-decoration: none;
+  color: black;
+  transform: scale(1.05);
+  }
+}
+
