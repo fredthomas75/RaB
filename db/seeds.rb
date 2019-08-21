@@ -34,7 +34,7 @@ puts "Creating 5 users"
 puts "Creating 10 boats"
 10.times { Boat.create!(
   name: Faker::Restaurant.name,
-  location: Faker::Address.state,
+  address: Faker::Address.state,
   description: Faker::Lorem.paragraph,
   category: category.sample,
   capacity: capacity.sample,
