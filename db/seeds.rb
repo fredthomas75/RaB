@@ -26,6 +26,7 @@ category = ["Power", "Sail", "Unpowered", "Pirate"]
 capacity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 year = [2010, 2011, 2012, 2013, 2014]
 equipment = ["gps", "lifejacket"]
+price = (200..100000).to_a
 
 puts "Creating 5 users"
 5.times { User.create!(email: Faker::Internet.email, password: Faker::Internet.password )}
@@ -33,7 +34,7 @@ puts "Creating 5 users"
 puts "Creating 10 boats"
 10.times { Boat.create!(
   name: Faker::Restaurant.name,
-  location: Faker::Address.full_address,
+  location: Faker::Address.state,
   description: Faker::Lorem.paragraph,
   category: category.sample,
   capacity: capacity.sample,
@@ -42,7 +43,8 @@ puts "Creating 10 boats"
   equipement: equipment.sample,
   user: User.all.sample,
   brand_model: BrandModel.all.sample,
-  remote_photo_url: 'https://source.unsplash.com/random/?boat'
+  remote_photo_url: 'https://source.unsplash.com/random/?boat',
+  price: price.sample
   ) }
 
 puts "Thank you for your patience!"
