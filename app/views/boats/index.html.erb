@@ -1,11 +1,13 @@
 <h1>List of boats</h1>
 
+
 <% @boats.each do |boat| %>
+<%= link_to boat_path(boat) do %>
 <div class="card-trip">
   <img src=<%= boat.photo %> />
     <div class="card-trip-infos">
       <div>
-        <h3><%= boat.name %></h3><h2>Brand - Model: <%= boat.brand_model.name %></h2>
+        <h3><%= boat.name%></h3><h2>Brand - Model: <%= boat.brand_model.name %></h2>
         <p><%= boat.description %></p>
         <p><%= boat.location %></p>
       </div>
@@ -15,4 +17,7 @@
   </div>
 </div>
 <% end %>
+<% end %>
+
+
 
