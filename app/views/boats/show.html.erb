@@ -1,17 +1,25 @@
+<div class="pl-5 pr-5 mt-5 mb-5">
 <div class="card-trip">
   <img src=<%= @boat.photo %> />
   <div class="card-trip-infos">
     <div>
       <h2><%= @boat.name%></h2>
-      <p> <%=@boat.description%></p>
     </div>
     <div>
     <h2 class="card-trip-pricing">Capacity: <%= @boat.capacity %></h2>
-    <h2 class="card-trip-pricing">Price per night: ???</h2>
+    <h2 class="card-trip-pricing">Price per night: <%= @boat %></h2>
     <img src="<%= @boat.user.photo %>" class="card-trip-user avatar-bordered" />
     </div>
   </div>
 </div>
-<%= link_to "delete", boat_path(@boat), method: :delete %>
 
-<%= link_to "edit boat", edit_boat_path(@boat) %>
+<div class="container">
+     <p> <%=@boat.description%></p>
+
+     <p class="btn btn-danger"><%= link_to "Delete", boat_path(@boat), method: :delete %></p>
+    <p class="btn btn-primary"><%= link_to "Edit", edit_boat_path(@boat) %></p>
+
+</div>
+
+
+</div>
