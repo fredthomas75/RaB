@@ -17,6 +17,8 @@ class BoatsController < ApplicationController
   # GET /boats/:id
   def show
     authorize @boat
+    @coordinates = [{ lat: @boat.latitude, lng: @boat.longitude }]
+    @booking = Booking.new
   end
 
   # GET /boats/new
