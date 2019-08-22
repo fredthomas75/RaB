@@ -53,7 +53,7 @@ class BoatsController < ApplicationController
   def destroy
     authorize @boat
     @boat.destroy
-    redirect_to boats_path
+    redirect_to root_path
   end
 
   private
