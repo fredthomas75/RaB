@@ -21,12 +21,24 @@
            <p><%= @boat.address %></p>
            <p><%= @boat.description %></p>
          </div>
-           <div class="pl-5">
+           <div class="pl-5 ">
              <% if @boat.user_id == current_user %>
               <div><%= link_to "Delete", boat_path(@boat), method: :delete, class: "btn btn-danger" %></div>
               <div><%= link_to "Edit", edit_boat_path(@boat), class: "btn btn-primary" %></div>
             <% else %>
-              <%= link_to "Reserve", new_boat_booking_path(@boat), class: "btn btn-success" %>
+              <div class = "form justify-content-between border pt-2">
+                <%= simple_form_for([@boat, @booking]) do |f| %>
+                  <%= f.input :start_date, as: :date,
+                  start_year: Date.today.year,
+                  order: [:day, :month, :year],
+                  html5: true %>
+                  <%= f.input :end_date, as: :date,
+                  start_year: Date.today.year,
+                  order: [:day, :month, :year],
+                  html5: true %>
+                  <%= f.submit value: 'reserve', class: "btn btn-success w-100" %>
+                <% end %>
+              </div>
             <% end %>
            </div>
        <img src="<%= @boat.user.photo %>" class="card-trip-user avatar-bordered" />
