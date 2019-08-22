@@ -1,1 +1,14 @@
 <h1>hello from bookings</h1>
+
+<h1><%= @booking.status %></h1>
+<% if policy(@booking).confirm_summary? %>
+  <%= link_to 'Confirm this summary', confirm_summary_path(@booking), method: :patch %>
+<% end %>
+
+<% if policy(@booking).accept? %>
+  <%= link_to 'Confirm this reservation', accept_path(@booking), method: :patch %>
+<% end %>
+
+<% if policy(@booking).refuse? %>
+  <%= link_to 'Refuse this reservation', refuse_path(@booking), method: :patch %>
+<% end %>
