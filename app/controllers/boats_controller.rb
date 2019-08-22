@@ -18,12 +18,21 @@ class BoatsController < ApplicationController
       @boats = Boat.search_by_name_and_description(params[:query])
     end
 
+<<<<<<< HEAD
       @markers = @boats.map do |boat|
         {
           lat: boat.latitude,
           lng: boat.longitude
         }
       end
+=======
+    @markers = @boats.map do |boat|
+      {
+        lat: boat.latitude,
+        lng: boat.longitude
+      }
+    end
+>>>>>>> 758e3cb6b1737ac0b71663b3d58a158e6e1d3bd6
   end
 
 
