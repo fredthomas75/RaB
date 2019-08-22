@@ -12,17 +12,18 @@ class BoatsController < ApplicationController
         lat: boat.latitude,
         lng: boat.longitude
       }
-      
+    end
+
     if params[:query].present?
       @boats = Boat.search_by_name_and_description(params[:query])
     end
-      
-      @markers = @boats.map do |boat|
-        {
-          lat: boat.latitude,
-          lng: boat.longitude
-        }
-      end
+
+    @markers = @boats.map do |boat|
+      {
+        lat: boat.latitude,
+        lng: boat.longitude
+      }
+    end
   end
 
 
