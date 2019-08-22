@@ -5,7 +5,7 @@ class BookingPolicy < ApplicationPolicy
     end
   end
 
-  def inrdex?
+  def index?
     return user_is_logged_in
   end
 
@@ -14,6 +14,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
+    puts 'Inside Create'
     return user_is_logged_in?
   end
 
@@ -36,6 +37,6 @@ class BookingPolicy < ApplicationPolicy
   private
 
   def user_is_logged_in?
-    return current_user
+    return user
   end
 end
