@@ -23,8 +23,10 @@
          </div>
            <div class="pl-5 ">
              <% if @boat.user == current_user %>
-              <div><%= link_to "Delete", boat_path(@boat), method: :delete, class: "btn btn-danger" %></div>
-              <div><%= link_to "Edit", edit_boat_path(@boat), class: "btn btn-primary" %></div>
+             <div class="container">
+                <div class="row"><%= link_to "Delete my boat", boat_path(@boat), method: :delete, class: "btn btn-danger w-100" %></div>
+                <div class="row"><%= link_to "Edit my boat", edit_boat_path(@boat), class: "btn btn-primary w-100" %></div>
+             </div>
             <% else %>
               <div class = "form justify-content-between border pt-2">
                 <%= simple_form_for([@boat, @booking]) do |f| %>

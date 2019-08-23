@@ -24,7 +24,7 @@ class BoatPolicy < ApplicationPolicy
   private
 
   def user_is_owner?
-    return record.user_id == user
+    return record.user == user
   end
   # record c'est le bateau
 end
