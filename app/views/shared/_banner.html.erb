@@ -1,6 +1,21 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url( <%= asset_url 'login.jpg' %> );">
   <div class="container">
-    <h1>RaB helps you to find <span class="wow">fucking big</span> boats</h1>
+    <h1 style="margin-bottom: 8px;">RaB helps you to find <span class="wow">FUCKING BIG</span> boats</h1>
     <p>Impress your friend with amazing instagram photos</p>
+
+    <!-- SEARCH BAR - BEGIN -->
+    <div style="width: 482px;">
+      <%= form_tag "/", method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a boat"
+        %>
+        <%= submit_tag "Search", class: "btn btn-danger" %>
+      <% end %>
+    </div>
+    <!-- SEARCH BAR - END -->
   </div>
+
+
 </div>
