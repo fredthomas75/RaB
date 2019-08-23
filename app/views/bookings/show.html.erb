@@ -1,22 +1,54 @@
-<div>
-  <h1>hello from bookings</h1>
+<div class="container "style= "margin: auto;margin-top: 80px; width: 100vh; height: 100vh;">
+
+  <div>
+    <div class="container justify-content_between col-11 ">
+  <div>
+    <h1>Confirm booking</h1>
+  </div>
+   <div class="card-trip" style= "margin: auto;margin-top: 80px;">
+    <!-- <div class="d-flex"> -->
+
+      <div style="background-image: url('<%= cl_image_path @boat.photo %>'); background-size: cover; background-position: center; height: 300px">
+
+      </div>
+
+
+
+
+    <!-- </div> -->
+       <div class="card-trip-infos" >
+         <div>
+           <h3><%= @boat.name%></h3><h2>Brand - Model: <%= @boat.brand_model.name %></h2>
+         <div>
+            <h2 class="card-trip-pricing">Capacity: <%= @boat.capacity %></h2><h2 class="card-trip-pricing"> Price: <%= @boat.price %></h2>
+         </div>
+           <p><%= @boat.address %></p>
+           <p><%= @boat.description %></p>
+         </div>
+       <img src="<%= @boat.user.photo %>" class="card-trip-user avatar-bordered" />
+     </div>
+  <!-- <h1><%= @booking.status %></h1> -->
+   </div>
+  <% if policy(@booking).confirm_summary? %>
+    <%= link_to 'Confirm this reservation', confirm_summary_path(@booking), method: :patch, class: "btn btn-success w-100" %>
+  <% end %>
+
+  <% if policy(@booking).accept? %>
+    <%= link_to 'Confirm this reservation', accept_path(@booking), method: :patch, class: "btn btn-success" %>
+  <% end %>
+
+  <% if policy(@booking).refuse? %>
+    <%= link_to 'Refuse this reservation', refuse_path(@booking), method: :patch, class: "btn btn-danger" %>
+  <% end %>
+
+  <% if @boat.user == current_user %>
+    <div class="container">
+      <div class="row"><%= link_to "Delete my reservation", bookings_path(@boat), method: :delete, class: "btn btn-danger w-100" %></div>
+    </div>
+  <% end %>
 </div>
 
-<h1><%= @booking.status %></h1>
-<% if policy(@booking).confirm_summary? %>
-  <%= link_to 'Confirm this summary', confirm_summary_path(@booking), method: :patch %>
-<% end %>
+</div>
 
-<% if policy(@booking).accept? %>
-  <%= link_to 'Confirm this reservation', accept_path(@booking), method: :patch %>
-<% end %>
 
-<% if policy(@booking).refuse? %>
-  <%= link_to 'Refuse this reservation', refuse_path(@booking), method: :patch %>
-<% end %>
 
-<% if @boat.user == current_user %>
-  <div class="container">
-    <div class="row"><%= link_to "Delete my reservation", bookings_path(@boat), method: :delete, class: "btn btn-danger w-100" %></div>
-  </div>
-<% end %>
