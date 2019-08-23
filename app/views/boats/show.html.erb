@@ -1,15 +1,17 @@
 
 <div class="container justify-content_between col-11 ">
-   <div class="card-trip">
+   <div class="card-trip" style= "margin: auto;margin-top: 80px;">
     <div class="d-flex">
-      <%= cl_image_tag @boat.photo, alt: "alttext", class: "w-50"%>
+      <div style="background-image: url('<%= cl_image_path @boat.photo %>'); background-size: cover; background-position: bottom;" class="w-50">
 
-        <div
-          id="map"
-          data-markers="<%= @coordinates.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-          class="w-50"
-        ></div>
+      </div>
+
+      <div
+        id="map"
+        data-markers="<%= @coordinates.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        class="showpage_map w-50"
+      ></div>
 
     </div>
        <div class="card-trip-infos">
