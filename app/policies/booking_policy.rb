@@ -5,8 +5,8 @@ class BookingPolicy < ApplicationPolicy
     end
   end
 
-  def inrdex?
-    return user_is_logged_in
+  def index?
+    return user_is_logged_in?
   end
 
   def show?
@@ -14,11 +14,24 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
+    puts 'Inside Create'
     return user_is_logged_in?
   end
 
   def new?
     create?
+  end
+
+  def confirm_summary?
+    return user_is_asking_for_booking? && record.status == 'Summary'
+  end
+
+  def accept?
+    return user_is_boat_owner?
+  end
+
+  def refuse?
+    return user_is_boat_owner?
   end
 
   def update?
@@ -36,6 +49,14 @@ class BookingPolicy < ApplicationPolicy
   private
 
   def user_is_logged_in?
-    return current_user
+    return user
+  end
+
+  def user_is_asking_for_booking?
+    return record.user == user
+  end
+
+  def user_is_boat_owner?
+    return record.boat.user == user
   end
 end
