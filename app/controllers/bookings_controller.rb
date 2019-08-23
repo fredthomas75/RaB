@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
     @booking.status = "Summary"
     @booking.boat = @boat
     @booking.user = current_user
-    if @booking.save!
+    if @booking.save
       redirect_to booking_path(@booking)
     else
       render 'boats/show'
