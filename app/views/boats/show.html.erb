@@ -1,15 +1,17 @@
 
 <div class="container justify-content_between col-11 ">
-   <div class="card-trip">
+   <div class="card-trip" style= "margin: auto;margin-top: 80px;">
     <div class="d-flex">
-      <%= cl_image_tag @boat.photo, alt: "alttext", class: "w-50"%>
+      <div style="background-image: url('<%= cl_image_path @boat.photo %>'); background-size: cover; background-position: bottom;" class="w-50">
 
-        <div
-          id="map"
-          data-markers="<%= @coordinates.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-          class="w-50"
-        ></div>
+      </div>
+
+      <div
+        id="map"
+        data-markers="<%= @coordinates.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        class="showpage_map w-50"
+      ></div>
 
     </div>
        <div class="card-trip-infos">
@@ -22,9 +24,11 @@
            <p><%= @boat.description %></p>
          </div>
            <div class="pl-5 ">
-             <% if @boat.user_id == current_user %>
-              <div><%= link_to "Delete", boat_path(@boat), method: :delete, class: "btn btn-danger" %></div>
-              <div><%= link_to "Edit", edit_boat_path(@boat), class: "btn btn-primary" %></div>
+             <% if @boat.user == current_user %>
+             <div class="container">
+                <div class="row"><%= link_to "Delete my boat", boat_path(@boat), method: :delete, class: "btn btn-danger w-100" %></div>
+                <div class="row"><%= link_to "Edit my boat", edit_boat_path(@boat), class: "btn btn-primary w-100" %></div>
+             </div>
             <% else %>
               <div class = "form justify-content-between border pt-2">
                 <%= simple_form_for([@boat, @booking]) do |f| %>
