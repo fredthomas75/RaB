@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
+gem 'pg_search'
+
 gem 'geocoder'
 gem 'pundit'
 gem 'devise'
