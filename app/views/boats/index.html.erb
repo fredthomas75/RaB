@@ -7,7 +7,7 @@
       <div class="cards row">
         <% @boats.each do |boat| %>
           <%=link_to boat_path(boat), class: "card-outer-link" do %>
-            <div class="card-trip">
+            <div class="card-trip boat-card-trip">
               <img src=<%= boat.photo %> />
                 <div class="card-trip-infos">
                   <div>
