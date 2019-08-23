@@ -1,53 +1,79 @@
-
+<div class='booking-container'>
 <h1>All your bookings </h1>
 
 <% if !@incoming_bookings.empty? %>
-<h2>Your boats bookings</h2>
-    <div class="cards row">
-      <% @incoming_bookings.each do |booking| %>
-        <%= link_to booking_path(booking), class: "card-outer-link" do %>
-          <div class="card-trip">
-            <img src=<%= booking.boat.photo %> />
-              <div class="card-trip-infos">
-                <div>
-                  <h3><%= booking.boat.name%></h3>
-                  <p>Guest: <strong><%= booking.user.name%></strong></p>
-                  <p>Start date: <strong><%= booking.start_date %></strong></p>
-                  <p>End date: <strong><%= booking.end_date %></strong></p>
-                  <p>Status: <strong><%= booking.status %></strong></p>
-                </div>
+
+  <h2>Your boats bookings</h2>
+  <div class="cards">
+    <% @incoming_bookings.each do |booking| %>
+
+        <div class="card-trip">
+
+          <%= link_to booking_path(booking), class: 'card-outer-link' do %>
+            <%= cl_image_tag booking.boat.photo %>
+          <% end %>
+
+          <div class="card-trip-infos">
+
+            <div>
+              <h3><%= link_to booking.boat.name, booking_path(booking)  %></h3>
+              <p>Guest: <strong><%= booking.user.name%></strong></p>
+              <p>Start date: <strong><%= booking.start_date %></strong></p>
+              <p>End date: <strong><%= booking.end_date %></strong></p>
+              <p>Status: <strong><%= booking.status %></strong></p>
             </div>
+
           </div>
-        <% end %>
-      <% end %>
-    </div>
+          <div class="card-trip-footer">
+            <%= link_to 'Confirm this reservation', accept_path(booking), method: :patch, class: 'btn btn-success' %>
+            <%= link_to 'Refuse this reservation', refuse_path(booking), method: :patch, class: 'btn btn-danger' %>
+          </div>
+        </div>
+
+    <% end %>
   </div>
 <% end %>
+
 
 <!-- if..else -->
 <%  if @outgoing_bookings.empty? %>
 <h2>You currently don't have any pending reservations on RaB!</h2>
 
 <% else %>
-<h2>Your bookings</h2>
-<div class="cards row">
-<% @outgoing_bookings.each do |booking| %>
-  <%= link_to booking_path(booking), class: "card-outer-link" do %>
-<div class="card-trip">
-            <img src=<%= booking.boat.photo %> />
-              <div class="card-trip-infos">
-                <div>
-                  <h3><%= booking.boat.name%></h3>
-                  <p>Guest: <strong><%= booking.boat.user. name%></strong></p>
-                  <p>Start date: <strong><%= booking.start_date %></strong></p>
-                  <p>End date: <strong><%= booking.end_date %></strong></p>
-                  <p>Price per night: <strong><%= booking.boat.price %></strong></p>
-                  <p>Status: <strong><%= booking.status %></strong></p>
-                </div>
+
+  <h2>Your bookings</h2>
+
+  <div class="cards row">
+    <% @outgoing_bookings.each do |booking| %>
+        <div class="card-trip">
+          <%= link_to booking_path(booking), class: "card-outer-link" do %>
+            <%= cl_image_tag booking.boat.photo %>
+          <% end %>
+
+          <div class="card-trip-infos">
+            <div>
+              <h3><%= booking.boat.name%></h3>
+              <p>Guest: <strong><%= booking.boat.user. name%></strong></p>
+              <p>Start date: <strong><%= booking.start_date %></strong></p>
+              <p>End date: <strong><%= booking.end_date %></strong></p>
+              <p>Price per night: <strong><%= booking.boat.price %></strong></p>
+              <p>Status: <strong><%= booking.status %></strong></p>
             </div>
           </div>
-        <% end %>
+
+          <% if booking.status == 'Confirmed' %>
+              <div class="card-trip-footer">
+                <%= link_to "Delete my reservation", booking, method: :delete, class: "btn btn-danger w-100" %>
+              </div>
+          <% end %>
+
+        </div>
       <% end %>
+
     </div>
   </div>
 <% end %>
+
+</div>
+
+
