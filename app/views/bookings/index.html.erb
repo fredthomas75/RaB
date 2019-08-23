@@ -7,7 +7,7 @@
   <div class="cards">
     <% @incoming_bookings.each do |booking| %>
 
-        <div class="card-trip">
+        <div class="card-trip booking-card-trip">
 
           <%= link_to booking_path(booking), class: 'card-outer-link' do %>
             <%= cl_image_tag booking.boat.photo %>
@@ -45,7 +45,7 @@
 
   <div class="cards row">
     <% @outgoing_bookings.each do |booking| %>
-        <div class="card-trip">
+        <div class="card-trip booking-card-trip">
           <%= link_to booking_path(booking), class: "card-outer-link" do %>
             <%= cl_image_tag booking.boat.photo %>
           <% end %>
