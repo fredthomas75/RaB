@@ -3,6 +3,13 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking)
+    @incoming_bookings = []
+    # array of boats for the user
+    current_user.boats.each do |boat|
+      # for each boat, iterate over bookings
+      boat.bookings.each { |booking| @incoming_bookings << booking }
+    end
+    @outgoing_bookings = @bookings.where(user: current_user)
   end
 
   def show
@@ -31,7 +38,7 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    end
+  end
 
   # Pas certain de la formulation pour l'update
   def update
