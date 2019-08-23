@@ -22,7 +22,7 @@
            <p><%= @boat.description %></p>
          </div>
            <div class="pl-5 ">
-             <% if @boat.user_id == current_user %>
+             <% if @boat.user == current_user %>
               <div><%= link_to "Delete", boat_path(@boat), method: :delete, class: "btn btn-danger" %></div>
               <div><%= link_to "Edit", edit_boat_path(@boat), class: "btn btn-primary" %></div>
             <% else %>
