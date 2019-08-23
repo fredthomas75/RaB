@@ -4,6 +4,7 @@
     <div class="container justify-content_between col-11 ">
   <div>
     <h1>Confirm booking</h1>
+  <h1><%= @booking.status %></h1>
   </div>
    <div class="card-trip" style= "margin: auto;margin-top: 80px;">
     <!-- <div class="d-flex"> -->
@@ -27,18 +28,17 @@
          </div>
        <img src="<%= @boat.user.photo %>" class="card-trip-user avatar-bordered" />
      </div>
-  <!-- <h1><%= @booking.status %></h1> -->
    </div>
   <% if policy(@booking).confirm_summary? %>
     <%= link_to 'Confirm this reservation', confirm_summary_path(@booking), method: :patch, class: "btn btn-success w-100" %>
   <% end %>
 
   <% if policy(@booking).accept? %>
-    <%= link_to 'Confirm this reservation', accept_path(@booking), method: :patch, class: "btn btn-success" %>
+    <%= link_to 'Confirm this reservation', accept_path(@booking), method: :patch, class: "btn btn-success w-100" %>
   <% end %>
 
   <% if policy(@booking).refuse? %>
-    <%= link_to 'Refuse this reservation', refuse_path(@booking), method: :patch, class: "btn btn-danger" %>
+    <%= link_to 'Refuse this reservation', refuse_path(@booking), method: :patch, class: "btn btn-danger w-100" %>
   <% end %>
 
   <% if @boat.user == current_user %>
