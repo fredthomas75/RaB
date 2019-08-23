@@ -11,7 +11,18 @@ class BoatsController < ApplicationController
       @boats = policy_scope(Boat)
     end
 
+<<<<<<< HEAD
     @markers = @boats.geocoded.map do |boat|
+=======
+      @markers = @boats.map do |boat|
+        {
+          lat: boat.latitude,
+          lng: boat.longitude
+        }
+      end
+
+    @markers = @boats.map do |boat|
+>>>>>>> 3ea952adedf66f6eed0ab4cd42bfdb96b8d1464e
       {
         lat: boat.latitude,
         lng: boat.longitude
@@ -19,8 +30,6 @@ class BoatsController < ApplicationController
     end
 
   end
-
-
 
   # GET /boats/:id
   def show
