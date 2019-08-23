@@ -1,44 +1,38 @@
 <%= render 'shared/banner' %>
 
+  <!-- SEARCH BAR - BEGIN -->
   <div class="d-flex ">
-      <div class="container">
-        <div class="row align_items_center">
-      <%= form_tag "/", method: :get, class: "d-flex w-100" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a boat"
-      %>
-      <%= submit_tag "Search", class: "btn btn-danger" %>
-    <% end %>
-        </div>
-
-    <div class="cards row">
-      <% @boats.each do |boat| %>
-        <%=link_to boat_path(boat), class: "card-outer-link" do %>
-          <div class="card-trip">
-            <img src=<%= boat.photo %> />
-              <div class="card-trip-infos">
-                <div>
-                  <h3><%= boat.name%></h3><h2>Brand - Model: <%= boat.brand_model.name %></h2>
-                  <p><%= boat.description %></p>
-                  <p><%= boat.address %></p>
-                </div>
-                <div><h2 class="card-trip-pricing">Capacity: <%= boat.capacity %></h2><h2 class="card-trip-pricing"> Price: <%= boat.price %></h2>
-                </div>
-              <img src="<%= boat.user.photo %>" class="card-trip-user avatar-bordered" />
+    <div class="container">
+      <!-- CARDS DES BATEAUX - BEGIN -->
+      <div class="cards row">
+        <% @boats.each do |boat| %>
+          <%=link_to boat_path(boat), class: "card-outer-link" do %>
+            <div class="card-trip">
+              <img src=<%= boat.photo %> />
+                <div class="card-trip-infos">
+                  <div>
+                    <h3><%= boat.name%></h3><h2>Brand - Model: <%= boat.brand_model.name %></h2>
+                    <p><%= boat.description %></p>
+                    <p><%= boat.address %></p>
+                  </div>
+                  <div><h2 class="card-trip-pricing">Capacity: <%= boat.capacity %></h2><h2 class="card-trip-pricing"> Price: <%= boat.price %></h2>
+                  </div>
+                <img src="<%= boat.user.photo %>" class="card-trip-user avatar-bordered" />
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+      <!-- CARDS DES BATEAUX - END -->
   </div>
 
+    <!-- MAP - BEGIN -->
     <div
       id="map"
       class="index_map"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
+    <!-- MAP - END -->
 
   </div>
