@@ -4,29 +4,17 @@ class BoatsController < ApplicationController
 
   # GET /boats
   def index
-
-    if params[:query].present?
-      @boats = Boat.search_by_name_and_description(params[:query])
-    else
-      @boats = policy_scope(Boat)
-    end
-
-<<<<<<< HEAD
-    @markers = @boats.geocoded.map do |boat|
-=======
-      @markers = @boats.map do |boat|
-        {
-          lat: boat.latitude,
-          lng: boat.longitude
-        }
-      end
+    @boats = policy_scope(Boat)
 
     @markers = @boats.map do |boat|
->>>>>>> 3ea952adedf66f6eed0ab4cd42bfdb96b8d1464e
       {
         lat: boat.latitude,
         lng: boat.longitude
       }
+    end
+
+    if params[:query].present?
+      @boats = Boat.search_by_name_and_description(params[:query])
     end
 
   end
