@@ -29,7 +29,7 @@ equipment = ["gps", "lifejacket"]
 price = (200..100000).to_a
 
 puts "Creating 5 users"
-5.times { User.create!(email: Faker::Internet.email, password: Faker::Internet.password )}
+5.times { User.create!(email: Faker::Internet.email, password: Faker::Internet.password, remote_photo_url: 'https://source.unsplash.com/random/?face' )}
 
 puts "Creating 10 boats"
 10.times { Boat.create!(
